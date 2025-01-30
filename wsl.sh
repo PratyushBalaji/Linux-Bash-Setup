@@ -121,6 +121,7 @@ alias cls="clear"
 alias curr="explorer.exe ." # opens current dir in windows explorer for easy file transfer
 alias waterloo="ssh <login>@<machine>" # replace with real login
 alias rm="rm -i"
+alias bat="batcat" # https://github.com/sharkdp/bat
 
 function gcc() {
   if [[ $# -eq 2 ]]; then
