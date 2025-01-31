@@ -122,7 +122,6 @@ alias curr="explorer.exe ." # opens current dir in windows explorer for easy fil
 alias waterloo="ssh <login>@<machine>" # replace with real login
 alias rm="rm -i"
 alias bat="batcat" # https://github.com/sharkdp/bat
-
 function gcc() {
   if [[ $# -eq 2 ]]; then
     /usr/bin/gcc -std=c99 -Wall $1 -o $2
@@ -136,8 +135,14 @@ function gcc() {
 # colorful prompt
 export PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
 
+# new paths
+export PATH=$PATH:/usr/local/go/bin:/home/pratyush/go/bin
+
+# rust
+. "$HOME/.cargo/env"
+
 # messages for next login
-MESSAGE='UPDATE spf ISSUE'
+MESSAGE='136l 100% completion lab2/3'
 RED='\033[0;31m'
 if [[ $- == *i* ]]; then
    echo -e "${RED}${MESSAGE}"
