@@ -90,9 +90,9 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# alias ll='ls -alF'
-# alias la='ls -A'
-# alias l='ls -CF'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -114,7 +114,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ls aliases and basic coloring are already configured in default ubuntu .bashrc
+# ls aliases and basic coloring are configured in default ubuntu .bashrc
 
 # misc aliases
 alias cls="clear"
@@ -122,13 +122,14 @@ alias curr="explorer.exe ." # opens current dir in windows explorer for easy fil
 alias waterloo="ssh <login>@<machine>" # replace with real login
 alias rm="rm -i"
 alias bat="batcat" # https://github.com/sharkdp/bat
+
 function gcc() {
   if [[ $# -eq 2 ]]; then
     /usr/bin/gcc -std=c99 -Wall $1 -o $2
   elif [[ $# -eq 1 ]]; then
     /usr/bin/gcc -std=c99 -Wall $1
   else
-    /usr/bin/gcc -std=c99 -Wall
+    /usr/bin/gcc -std=c99 -Wall $@
   fi
 }
 
@@ -136,10 +137,13 @@ function gcc() {
 export PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
 
 # new paths
-export PATH=$PATH:/usr/local/go/bin:/home/pratyush/go/bin
+export PATH=$PATH:/usr/local/go/bin:/home/pratyush/go/bin:$HOME/bin
 
 # rust
 . "$HOME/.cargo/env"
+
+# mcfly
+eval "$(mcfly init bash)"
 
 # messages for next login
 MESSAGE='136l 100% completion lab2/3'
