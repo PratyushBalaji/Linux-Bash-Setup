@@ -8,21 +8,19 @@ alias l='ls -CF'
 alias grep="grep --color=auto"
 alias cls="clear"
 alias rm='rm -i'
+#alias gcc='gcc -std=c99 -Wall'
 
-# alias gcc='gcc -std=c99 -Wall'
-# Usage : "gcc <filename>.c <output_filename>"
 function gcc() {
   if [[ $# -eq 2 ]]; then
     /usr/bin/gcc -std=c99 -Wall $1 -o $2
   elif [[ $# -eq 1 ]]; then
     /usr/bin/gcc -std=c99 -Wall $1
   else
-    /usr/bin/gcc -std=c99 -Wall
+    /usr/bin/gcc -std=c99 -Wall $@
   fi
 }
 
 # marmoset functions
-# i push more to cs136l labs than other cs courses so that is my default
 function marmosubmit() {
   if [[ "$1" == cs* ]]; then
     /u/cs_build/bin/marmoset submit "$@"
@@ -40,9 +38,7 @@ function marmoresult() {
 }
 
 # colorful prompt
-export PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
-
-# my custom bash scripts in /bin are accessible on PATH
+PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
 export PATH="$PATH:$HOME/bin"
 
 # messages for next login
