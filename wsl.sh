@@ -145,6 +145,16 @@ export PATH=$PATH:/usr/local/go/bin:/home/pratyush/go/bin:$HOME/bin
 # mcfly
 eval "$(mcfly init bash)"
 
+# random word definition
+# install dictd with `sudo apt-get install dict dictd dict-gcide`
+# you can install custom dictionaries too.
+# uses the `words` file in my home directory which contains a bulk of english words,
+#   chooses a random one, and finds the definition
+function randefine(){
+  randomword=$(shuf -n 1 ~/words)
+  echo "Word : " "$randomword" && dict $randomword 2>/dev/null || echo No definition found
+}
+
 # messages for next login
 MESSAGE='136l 100% completion lab2/3'
 RED='\033[0;31m'
