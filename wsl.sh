@@ -122,6 +122,7 @@ alias curr="explorer.exe ." # opens current dir in windows explorer for easy fil
 alias waterloo="ssh <login>@<machine>" # replace with real login
 alias rm="rm -i"
 alias bat="batcat" # https://github.com/sharkdp/bat
+alias dirgrep="grep -rin"
 
 function gcc() {
   if [[ $# -eq 2 ]]; then
@@ -133,8 +134,13 @@ function gcc() {
   fi
 }
 
-# colorful prompt
-export PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
+# colorful prompt - with current git repo/branch
+if command -v __git_ps1 > /dev_null; then
+  PS1='\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[01;36m\]`__git_ps1 " (%s)"`\[\033[00m\]\n\$ '
+else
+  # fallback PS1 if __git_ps1 not available
+  PS1="\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[00m\]\$ "
+fi
 
 # new paths
 export PATH=$PATH:/usr/local/go/bin:/home/pratyush/go/bin:$HOME/bin
@@ -156,7 +162,7 @@ function randefine(){
 }
 
 # messages for next login
-MESSAGE='136l 100% completion lab2/3'
+MESSAGE=''
 RED='\033[0;31m'
 if [[ $- == *i* ]]; then
    echo -e "${RED}${MESSAGE}"
