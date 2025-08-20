@@ -135,7 +135,7 @@ function gcc() {
 }
 
 # colorful prompt - with current git repo/branch
-if command -v __git_ps1 > /dev_null; then
+if command -v __git_ps1 > /dev/null; then
   PS1='\[\033[01;32m\]\u@\h:\[\033[01;34m\]\w \[\033[01;33m\]\t\[\033[01;36m\]`__git_ps1 " (%s)"`\[\033[00m\]\n\$ '
 else
   # fallback PS1 if __git_ps1 not available
