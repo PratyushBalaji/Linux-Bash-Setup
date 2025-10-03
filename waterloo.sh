@@ -58,7 +58,7 @@ export PS1
 export PATH="$PATH:$HOME/bin"
 
 # messages for next login
-MESSAGE='FINISH MARKDOWN CLI PREVIEW UTILITY'
+MESSAGE='THINK ABOUT 246E PROJECT'
 RED='\033[0;31m'
 if [[ $- == *i* ]]; then
    echo -e "${RED}${MESSAGE}"
