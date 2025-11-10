@@ -123,6 +123,7 @@ alias waterloo="ssh <login>@<machine>" # replace with real login
 alias rm="rm -i"
 alias bat="batcat" # https://github.com/sharkdp/bat
 alias dirgrep="grep -rin"
+alias lastcommit='git log -1 --pretty=%B' # use for commitlint : `$ lastcommit | commitlint`
 
 function gcc() {
   if [[ $# -eq 2 ]]; then
