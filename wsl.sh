@@ -124,6 +124,7 @@ alias rm="rm -i"
 alias bat="batcat" # https://github.com/sharkdp/bat
 alias dirgrep="grep -rin"
 alias lastcommit='git log -1 --pretty=%B' # use for commitlint : `$ lastcommit | commitlint`
+alias lintlast='lastcommit | commitlint > /dev/null && echo "good commit" || echo "bad commit"' # uses exit status to know if lastcommit was linted correctly or not
 
 function gcc() {
   if [[ $# -eq 2 ]]; then
